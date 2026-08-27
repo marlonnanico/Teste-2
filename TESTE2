@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Loja online com produtos selecionados e ofertas especiais.">
+  <title>Viva Store | Ofertas especiais</title>
+  <style>
+    :root {
+      --ink: #17211b;
+      --muted: #617066;
+      --green: #176b4d;
+      --green-dark: #0f4b36;
+      --mint: #e5f2e8;
+      --cream: #fffaf0;
+      --orange: #e9783f;
+      --line: #dfe8df;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 250, 240, 0.96);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+    }
+
+    .logo span { color: var(--orange); }
+
+    nav {
+      display: flex;
+      gap: 26px;
+      color: var(--muted);
+      font: 600 0.92rem Arial, sans-serif;
+    }
+
+    nav a:hover { color: var(--green); }
+
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 4px;
+      padding: 13px 20px;
+      background: var(--green);
+      color: var(--white);
+      font: bold 0.9rem Arial, sans-serif;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 76px 0 84px;
+      background: linear-gradient(125deg, var(--mint) 0%, var(--cream) 62%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--orange);
+      font: bold 0.78rem Arial, sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 580px;
+      margin: 0 0 20px;
+      font-size: clamp(2.7rem, 6vw, 5.2rem);
+      line-height: 0.98;
+      font-weight: normal;
+    }
+
+    .hero-copy {
+      max-width: 500px;
+      margin: 0 0 30px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.65;
+    }
+
+    .product {
+      position: relative;
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: #f5e7cb;
+      overflow: hidden;
+    }
+
+    .product::before,
+    .product::after {
+      position: absolute;
+      content: '';
+      border-radius: 50%;
+      background: #e8c79d;
+    }
+
+    .product::before { width: 270px; height: 270px; top: -80px; right: -50px; }
+    .product::after { width: 190px; height: 190px; bottom: -70px; left: -50px; background: #d4e5c7; }
+
+    .product-box {
+      position: relative;
+      z-index: 1;
+      width: 210px;
+      padding: 52px 24px;
+      border: 8px solid #fff4db;
+      border-radius: 8px;
+      background: var(--orange);
+      box-shadow: 18px 20px 0 rgba(23, 33, 27, 0.13);
+      color: white;
+      text-align: center;
+      transform: rotate(-5deg);
+    }
+
+    .product-box strong { display: block; font-size: 2.1rem; }
+    .product-box small { font: 0.85rem Arial, sans-serif; letter-spacing: 0.12em; }
+
+    .features {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .feature { padding-right: 20px; border-right: 1px solid var(--line); }
+    .feature:last-child { border-right: 0; }
+    .feature b { display: block; margin-bottom: 8px; font-size: 1.15rem; }
+    .feature p { margin: 0; color: var(--muted); line-height: 1.5; }
+
+    .offer { padding: 74px 0 90px; text-align: center; }
+    .offer h2 { margin: 0 0 12px; font-size: 2.4rem; font-weight: normal; }
+    .offer p { margin: 0 auto 25px; color: var(--muted); }
+    .price { margin-bottom: 24px; color: var(--green); font-size: 3rem; font-weight: bold; }
+    .price small { color: var(--muted); font: 1rem Arial, sans-serif; }
+
+    footer {
+      padding: 24px 0;
+      background: var(--ink);
+      color: #dce9dc;
+      text-align: center;
+      font: 0.85rem Arial, sans-serif;
+    }
+
+    @media (max-width: 720px) {
+      .container { width: min(100% - 28px, 560px); }
+      .nav { min-height: 68px; }
+      nav { display: none; }
+      .hero { padding: 54px 0 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 42px; }
+      .product { min-height: 300px; }
+      .feature-grid { grid-template-columns: 1fr; gap: 24px; }
+      .feature { padding: 0 0 22px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .feature:last-child { padding-bottom: 0; border-bottom: 0; }
+      .offer { padding: 60px 0 70px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#inicio">Viva<span>.</span></a>
+      <nav aria-label="Navegação principal">
+        <a href="#beneficios">Benefícios</a>
+        <a href="#oferta">Oferta</a>
+      </nav>
+      <a class="button" href="#oferta">Comprar agora</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Edição especial</p>
+          <h1>Pequenas escolhas. Grandes mudanças.</h1>
+          <p class="hero-copy">Conheça o produto que combina praticidade, qualidade e um design feito para acompanhar sua rotina.</p>
+          <a class="button" href="#oferta">Quero conhecer</a>
+        </div>
+        <div class="product" aria-label="Imagem ilustrativa do produto Viva">
+          <div class="product-box">
+            <strong>VIVA</strong>
+            <small>ESSENCIAL</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="beneficios">
+      <div class="container feature-grid">
+        <article class="feature">
+          <b>Feito para durar</b>
+          <p>Materiais selecionados para entregar qualidade no dia a dia.</p>
+        </article>
+        <article class="feature">
+          <b>Compra segura</b>
+          <p>Pagamento protegido e suporte sempre que você precisar.</p>
+        </article>
+        <article class="feature">
+          <b>Envio rápido</b>
+          <p>Seu pedido preparado com cuidado e despachado rapidamente.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="offer" id="oferta">
+      <div class="container">
+        <p class="eyebrow">Oferta de lançamento</p>
+        <h2>Leve o seu hoje</h2>
+        <p>Frete grátis para todo o Brasil por tempo limitado.</p>
+        <div class="price">R$ 89,90 <small>à vista</small></div>
+        <a class="button" href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20quero%20comprar%20o%20produto%20Viva!" target="_blank" rel="noopener">Comprar pelo WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">Viva Store &copy; 2026 | Feito para deixar sua rotina mais leve.</div>
+  </footer>
+</body>
+</html>
